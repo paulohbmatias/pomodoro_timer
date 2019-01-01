@@ -8,8 +8,6 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> with TickerProviderStateMixin{
 
-  static const int kStartValue = 25;
-
   @override
   void initState() {
     super.initState();
@@ -22,21 +20,27 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          CircularPercentIndicator(
-            radius: 300.0,
-            lineWidth: 20.0,
-            percent: 0.2,
-            center: StreamBuilder(
-                stream: bloc.timer,
-                initialData: "25 : 00",
-                builder: (context, snapshot){
-                  return Text(
-                    snapshot.data,
-                    style: TextStyle(fontSize: 40.0),
-                  );
-                }
-            ),
-            progressColor: Colors.green,
+          StreamBuilder(
+            stream: bloc.percent,
+            initialData: 100,
+            builder: (context, snapshot){
+              return CircularPercentIndicator(
+                radius: MediaQuery.of(context).size.width - 20,
+                lineWidth: 20.0,
+                percent: snapshot.data/100,
+                center: StreamBuilder(
+                    stream: bloc.timer,
+                    initialData: "25 : 00",
+                    builder: (context, snapshot){
+                      return Text(
+                        snapshot.data,
+                        style: TextStyle(fontSize: 40.0),
+                      );
+                    }
+                ),
+                progressColor: Colors.green,
+              );
+            },
           ),
           Container(
             margin: EdgeInsets.all(20.0),
