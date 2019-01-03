@@ -13,6 +13,13 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
     super.initState();
   }
 
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,33 +28,46 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           StreamBuilder(
-            stream: bloc.percent,
-            initialData: 100,
+            stream: bloc.timer,
+            initialData: "25 : 00",
             builder: (context, snapshot){
               return CircularPercentIndicator(
                 radius: MediaQuery.of(context).size.width - 20,
                 lineWidth: 20.0,
-                percent: snapshot.data/100,
-                center: StreamBuilder(
-                    stream: bloc.timer,
-                    initialData: "25 : 00",
-                    builder: (context, snapshot){
-                      return Text(
-                        snapshot.data,
-                        style: TextStyle(fontSize: 40.0),
-                      );
-                    }
+                percent: bloc.percent/100,
+                center: Text(
+                  snapshot.data,
+                  style: TextStyle(fontSize: 40.0),
                 ),
                 progressColor: Colors.green,
               );
-            },
+            }
           ),
           Container(
-            margin: EdgeInsets.all(20.0),
-            child: RaisedButton(
-                child: Text("Start"),
-                shape: RoundedRectangleBorder(side: BorderSide(style: BorderStyle.solid)),
-                onPressed: bloc.initCountDown
+            margin: EdgeInsets.all(16.0),
+            child: StreamBuilder(
+              stream: bloc.isRunning,
+              initialData: false,
+              builder: (context, snapshot){
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(snapshot.data ? Icons.pause : Icons.play_arrow),
+                      onPressed: snapshot.data ? bloc.pauseCountDown : bloc.initCountDown,
+                      iconSize: 60,
+                    ),
+                    Visibility(
+                      visible: snapshot.data ? true : false,
+                      child: IconButton(
+                        icon: Icon(Icons.stop),
+                        onPressed: bloc.stopCountDown,
+                        iconSize: 60,
+                      ),
+                    )
+                  ],
+                );
+              },
             ),
           )
         ],
