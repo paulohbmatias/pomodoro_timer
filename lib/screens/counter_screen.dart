@@ -8,11 +8,7 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> with TickerProviderStateMixin{
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  final colorTextIcons = Color.fromARGB(255, 209,56,52);
 
   @override
   void dispose() {
@@ -35,11 +31,12 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
                 radius: MediaQuery.of(context).size.width - 30,
                 lineWidth: 20.0,
                 percent: bloc.percent/100,
+                backgroundColor: Colors.white,
+                progressColor: colorTextIcons,
                 center: Text(
                   snapshot.data,
-                  style: TextStyle(fontSize: 40.0),
+                  style: TextStyle(fontSize: 40.0, color: colorTextIcons),
                 ),
-                progressColor: Colors.green,
               );
             }
           ),
@@ -48,7 +45,7 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
             child: Column(
               children: <Widget>[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Image.asset('icons/tomato_fill.png'),
                     Image.asset('icons/tomato_fill.png'),
@@ -65,6 +62,7 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
                         builder: (context, snapshot){
                           return IconButton(
                             icon: Icon(snapshot.data ? Icons.pause : Icons.play_arrow),
+                            color: colorTextIcons,
                             onPressed: snapshot.data ? bloc.pauseCountDown : bloc.initCountDown,
                             iconSize: 60,
                           );
@@ -78,6 +76,7 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
                             visible: snapshot.data ? true : false,
                             child: IconButton(
                               icon: Icon(Icons.stop),
+                              color: colorTextIcons,
                               onPressed: bloc.stopCountDown,
                               iconSize: 60,
                             ),
