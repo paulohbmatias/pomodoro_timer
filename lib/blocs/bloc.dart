@@ -10,16 +10,21 @@ class Bloc extends Object with Transformers {
 
   final _timer = StreamController<int>();
   final _isRunning = StreamController<bool>();
+  final _isStarted = StreamController<bool>();
 
   Stream<String> get timer => _timer.stream.transform(timerTransform);
 
   Stream<bool> get isRunning => _isRunning.stream;
+
+  Stream<bool> get isStarted => _isStarted.stream;
 
   double get percent => _percent;
 
   Function(int) get changeTimer => _timer.sink.add;
 
   Function(bool) get changeIsRunning => _isRunning.sink.add;
+
+  Function(bool) get changeIsStarted => _isStarted.sink.add;
 
   void initCountDown() {
     Timer.periodic(Duration(seconds: 1), (timer){
@@ -30,6 +35,7 @@ class Bloc extends Object with Transformers {
     });
     stopwatch.start();
     changeIsRunning(true);
+    changeIsStarted(true);
   }
 
   void pauseCountDown() {
@@ -39,6 +45,7 @@ class Bloc extends Object with Transformers {
 
   void stopCountDown() {
     changeIsRunning(false);
+    changeIsStarted(false);
     stopwatch.stop();
     stopwatch.reset();
   }
@@ -47,6 +54,7 @@ class Bloc extends Object with Transformers {
   dispose() {
     _timer.close();
     _isRunning.close();
+    _isStarted.close();
   }
 }
 

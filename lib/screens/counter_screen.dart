@@ -27,12 +27,12 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          StreamBuilder(
+          StreamBuilder<String>(
             stream: bloc.timer,
             initialData: "25 : 00",
             builder: (context, snapshot){
               return CircularPercentIndicator(
-                radius: MediaQuery.of(context).size.width - 20,
+                radius: MediaQuery.of(context).size.width - 30,
                 lineWidth: 20.0,
                 percent: bloc.percent/100,
                 center: Text(
@@ -45,29 +45,48 @@ class _CounterScreenState extends State<CounterScreen> with TickerProviderStateM
           ),
           Container(
             margin: EdgeInsets.all(16.0),
-            child: StreamBuilder(
-              stream: bloc.isRunning,
-              initialData: false,
-              builder: (context, snapshot){
-                return Row(
+            child: Column(
+              children: <Widget>[
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    IconButton(
-                      icon: Icon(snapshot.data ? Icons.pause : Icons.play_arrow),
-                      onPressed: snapshot.data ? bloc.pauseCountDown : bloc.initCountDown,
-                      iconSize: 60,
-                    ),
-                    Visibility(
-                      visible: snapshot.data ? true : false,
-                      child: IconButton(
-                        icon: Icon(Icons.stop),
-                        onPressed: bloc.stopCountDown,
-                        iconSize: 60,
-                      ),
-                    )
+                    Image.asset('icons/tomato_fill.png'),
+                    Image.asset('icons/tomato_fill.png'),
+                    Image.asset('icons/tomato.png'),
+                    Image.asset('icons/tomato.png'),
                   ],
-                );
-              },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    StreamBuilder(
+                        stream: bloc.isRunning,
+                        initialData: false,
+                        builder: (context, snapshot){
+                          return IconButton(
+                            icon: Icon(snapshot.data ? Icons.pause : Icons.play_arrow),
+                            onPressed: snapshot.data ? bloc.pauseCountDown : bloc.initCountDown,
+                            iconSize: 60,
+                          );
+                        }
+                    ),
+                    StreamBuilder(
+                        stream: bloc.isStarted,
+                        initialData: false,
+                        builder: (context, snapshot){
+                          return Visibility(
+                            visible: snapshot.data ? true : false,
+                            child: IconButton(
+                              icon: Icon(Icons.stop),
+                              onPressed: bloc.stopCountDown,
+                              iconSize: 60,
+                            ),
+                          );
+                        }
+                    ),
+                  ],
+                )
+              ],
             ),
           )
         ],
