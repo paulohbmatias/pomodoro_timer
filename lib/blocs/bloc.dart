@@ -1,20 +1,27 @@
 import 'package:pomodoro_timer/blocs/transformers.dart';
 import 'dart:async';
-
+import 'package:flutter/material.dart';
+import 'package:pomodoro_timer/datas/pomodoro_preferences.dart';
 import 'package:pomodoro_timer/enums/status_pomodoro.dart';
+import 'package:pomodoro_timer/screens/settings_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Bloc extends Object with Transformers {
 
   Duration duration;
   double _percent = 100;
   double oneSecondInPercent;
-  int _secondesInShortBreak = 5;
-  int _secondesInLongBreak = 7;
-  int _secondesInPomodoro = 10;
+  int _secondesInShortBreak;
+  int _secondesInLongBreak;
+  int _secondesInPomodoro;
   int _countPomodoros = 0;
   int _pomodoroPage = 0;
   int _shortBreakPage = 1;
   int _longBreakPage = 2;
+  List<int> timePomodoro = [20, 25, 30, 35, 40, 45, 50, 55, 60];
+  List<int> timeShortBreak = [3, 5, 7];
+  List<int> timeLongBreak = [15, 20, 25, 30];
+  PomodoroPreferences prefs;
 
   StatusPomodoro _statusPomodoro = StatusPomodoro.pomodoro;
 
@@ -23,20 +30,36 @@ class Bloc extends Object with Transformers {
   final _timer = StreamController<int>();
   final _isRunning = StreamController<bool>();
   final _isStarted = StreamController<bool>();
+  final _isBottomSheetOpen = StreamController<bool>.broadcast();
   final _pomodoros = StreamController<int>();
   final _page = StreamController<int>();
+  final _secondsPomodoroStream = StreamController<int>.broadcast();
+  final _secondsShortBreakStream = StreamController<int>.broadcast();
+  final _secondsLongBreakStream = StreamController<int>.broadcast();
 
   Stream<String> get timer => _timer.stream.transform(timerTransform);
   Stream<bool> get isRunning => _isRunning.stream;
   Stream<bool> get isStarted => _isStarted.stream;
+  Stream<bool> get isBottomSheetOpen => _isBottomSheetOpen.stream;
   Stream<int> get page => _page.stream;
+  Stream<int> get secondsPomodoro => _secondsPomodoroStream.stream;
+  Stream<int> get secondsShortBreak => _secondsShortBreakStream.stream;
+  Stream<int> get secondsLongBreak => _secondsLongBreakStream.stream;
 
   double get percent => _percent;
   int get pomodoros => _countPomodoros;
+  int get getTimePomodoro => _secondesInPomodoro~/60;
+  int get getTimeShortBreak => _secondesInShortBreak~/60;
+  int get getTimeLongBreak => _secondesInLongBreak~/60;
 
   Function(int) get changeTimer => _timer.sink.add;
   Function(bool) get changeIsRunning => _isRunning.sink.add;
   Function(bool) get changeIsStarted => _isStarted.sink.add;
+  Function(bool) get changeIsBottomSheetOpen => _isBottomSheetOpen.sink.add;
+  Function(int) get changeSecondsPomodoro => _secondsPomodoroStream.sink.add;
+  Function(int) get changeSecondsShortBreak => _secondsShortBreakStream.sink.add;
+  Function(int) get changeSecondsLongBreak => _secondsLongBreakStream.sink.add;
+
   void changePage(int page){
     switch(page){
       case 0:
@@ -48,12 +71,41 @@ class Bloc extends Object with Transformers {
       case 2:
         changeStatusTime(StatusPomodoro.longBreak);
         break;
-
     }
   }
 
 
-  void initCountDown() {
+  void initCountDown() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    prefs = PomodoroPreferences(sharedPreferences);
+    _secondesInPomodoro = prefs.getTimePomodoro() ?? 1500;
+    _secondesInShortBreak = prefs.getTimeShortBreak() ?? 300;
+    _secondesInLongBreak = prefs.getTimeLongBreak() ?? 900;
+    secondsPomodoro.listen(
+        (seconds){
+          prefs.setTimePomodoro(seconds * 60);
+          _secondesInPomodoro = 60 * seconds;
+          if(_statusPomodoro == StatusPomodoro.pomodoro)
+            changeStatusTime(_statusPomodoro);
+        }
+    );
+    secondsShortBreak.listen(
+            (seconds){
+          prefs.setTimeShortBreak(seconds * 60);
+          _secondesInShortBreak = seconds * 60;
+          if(_statusPomodoro == StatusPomodoro.shortBreak)
+            changeStatusTime(_statusPomodoro);
+        }
+    );
+    secondsLongBreak.listen(
+            (seconds){
+          prefs.setTimeLongBreak(seconds * 60);
+          _secondesInLongBreak = seconds * 60;
+          if(_statusPomodoro == StatusPomodoro.longBreak)
+            changeStatusTime(_statusPomodoro);
+        }
+    );
+
     if(oneSecondInPercent == null)
       oneSecondInPercent = 100/_secondesInPomodoro;
     if(duration == null)
@@ -97,8 +149,9 @@ class Bloc extends Object with Transformers {
         break;
     }
     stopCountDown();
-
   }
+
+
   void startCountDown(){
     stopwatch.start();
     changeIsRunning(true);
@@ -122,8 +175,12 @@ class Bloc extends Object with Transformers {
     _timer.close();
     _isRunning.close();
     _isStarted.close();
+    _isBottomSheetOpen.close();
     _pomodoros.close();
     _page.close();
+    _secondsPomodoroStream.close();
+    _secondsShortBreakStream.close();
+    _secondsLongBreakStream.close();
   }
 }
 
