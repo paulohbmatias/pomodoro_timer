@@ -79,9 +79,9 @@ class Bloc extends Object with Transformers, LocalNotification{
   void initCountDown() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     prefs = PomodoroPreferences(sharedPreferences);
-    _secondesInPomodoro = prefs.getTimePomodoro() ?? 1500;
-    _secondesInShortBreak = prefs.getTimeShortBreak() ?? 300;
-    _secondesInLongBreak = prefs.getTimeLongBreak() ?? 900;
+    _secondesInPomodoro = prefs.getTimePomodoro() ?? 10;
+    _secondesInShortBreak = prefs.getTimeShortBreak() ?? 5;
+    _secondesInLongBreak = prefs.getTimeLongBreak() ?? 7;
     secondsPomodoro.listen(
         (seconds){
           prefs.setTimePomodoro(seconds * 60);

@@ -14,7 +14,7 @@ class BottomSheetPomodoro extends StatelessWidget {
         initialData: 0,
         builder: (context, snapshot){
           return BottomNavigationBar(
-            fixedColor: Color.fromARGB(255, 229, 22, 22),
+            fixedColor: Colors.red[500],
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 title: Text("Work"),
