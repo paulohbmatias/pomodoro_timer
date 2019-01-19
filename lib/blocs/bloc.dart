@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pomodoro_timer/datas/pomodoro_preferences.dart';
 import 'package:pomodoro_timer/enums/status_pomodoro.dart';
-import 'package:pomodoro_timer/screens/settings_screen.dart';
+import 'package:pomodoro_timer/helpers/local_notification.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Bloc extends Object with Transformers {
+class Bloc extends Object with Transformers, LocalNotification{
 
   Duration duration;
   double _percent = 100;
@@ -22,14 +22,15 @@ class Bloc extends Object with Transformers {
   List<int> timeShortBreak = [3, 5, 7];
   List<int> timeLongBreak = [15, 20, 25, 30];
   PomodoroPreferences prefs;
+  bool notificationIsActive = false;
 
   StatusPomodoro _statusPomodoro = StatusPomodoro.pomodoro;
-
   Stopwatch stopwatch = Stopwatch();
 
-  final _timer = StreamController<int>();
+
+  final _timer = StreamController<int>.broadcast();
   final _isRunning = StreamController<bool>();
-  final _isStarted = StreamController<bool>();
+  final _isStarted = StreamController<bool>.broadcast();
   final _isBottomSheetOpen = StreamController<bool>.broadcast();
   final _pomodoros = StreamController<int>();
   final _page = StreamController<int>();
@@ -106,6 +107,37 @@ class Bloc extends Object with Transformers {
         }
     );
 
+    timer.listen(
+        (timer){
+            if(notificationIsActive)
+              updateNotification(timer);
+        }
+    );
+
+    isStarted.listen(
+        (isStarted){
+          if(isStarted){
+            switch(_statusPomodoro){
+              case StatusPomodoro.pomodoro:
+                createNotification("${(_secondesInPomodoro ~/ 60).toString().padLeft(2, '0')} "
+                    ": ${(_secondesInPomodoro % 60).toString().padLeft(2, '0')}");
+                break;
+              case StatusPomodoro.shortBreak:
+                createNotification("${(_secondesInShortBreak ~/ 60).toString().padLeft(2, '0')} "
+                    ": ${(_secondesInShortBreak % 60).toString().padLeft(2, '0')}");
+                break;
+              case StatusPomodoro.longBreak:
+                createNotification("${(_secondesInLongBreak ~/ 60).toString().padLeft(2, '0')} "
+                    ": ${(_secondesInLongBreak % 60).toString().padLeft(2, '0')}");
+                break;
+            }
+          }else{
+            cancelNotification();
+            notificationIsActive = false;
+          }
+        }
+    );
+
     if(oneSecondInPercent == null)
       oneSecondInPercent = 100/_secondesInPomodoro;
     if(duration == null)
@@ -116,11 +148,14 @@ class Bloc extends Object with Transformers {
       _percent = oneSecondInPercent * time;
       if(time == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros == 3 ){
         _countPomodoros = 0;
+        pauseNotification('long break');
         changeStatusTime(StatusPomodoro.longBreak);
       }else if(time == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros < 3){
         _countPomodoros++;
+        pauseNotification('short break');
         changeStatusTime(StatusPomodoro.shortBreak);
       }else if(time == 0){
+        workNotification();
         changeStatusTime(StatusPomodoro.pomodoro);
       }
     });
@@ -151,9 +186,16 @@ class Bloc extends Object with Transformers {
     stopCountDown();
   }
 
+  Future<bool> closeScreen({BuildContext context}) async{
+    changeIsBottomSheetOpen(false);
+    if(context != null)
+      Navigator.of(context).pop();
+    return true;
+  }
 
   void startCountDown(){
     stopwatch.start();
+    notificationIsActive = true;
     changeIsRunning(true);
     changeIsStarted(true);
   }

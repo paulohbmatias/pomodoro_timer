@@ -17,16 +17,16 @@ class BottomSheetPomodoro extends StatelessWidget {
             fixedColor: Color.fromARGB(255, 229, 22, 22),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                title: Text("Pomodoro"),
+                title: Text("Work"),
                 icon: Icon(Icons.timer),
               ),
               BottomNavigationBarItem(
                 title: Text("Short Break"),
-                icon: Icon(Icons.timer),
+                icon: Icon(Icons.free_breakfast),
               ),
               BottomNavigationBarItem(
                 title: Text("Long Break"),
-                icon: Icon(Icons.timer),
+                icon: Icon(Icons.tv),
               ),
             ],
             currentIndex: snapshot.data,

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ListPomodoros extends StatelessWidget {
 
   final int pomodoros;
+  final double width;
 
-  const ListPomodoros({Key key, this.pomodoros}) : super(key: key);
+  const ListPomodoros(this.pomodoros, this.width);
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +21,13 @@ class ListPomodoros extends StatelessWidget {
       if(i <= pomodoros)
         list.add(Image.asset(
           'assets/pomodoro_fill.png',
-          height: 24,
-          width: 24,
+          height: width < 350 ? 24 : 42,
         ));
       else
         list.add(Image.asset(
           'assets/pomodoro.png',
           color: Colors.white,
-          height: 24,
-          width: 24,
+          height: width < 350 ? 24 : 42,
         ));
       list.add(SizedBox(width: 8,));
     }

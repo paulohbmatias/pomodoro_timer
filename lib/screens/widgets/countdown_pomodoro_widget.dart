@@ -10,11 +10,10 @@ class CountDownPomodoroWidget extends StatelessWidget {
   final double height;
   final double width;
   final colorTextIcons = Colors.white;
-  const CountDownPomodoroWidget(this.bloc, this.height, this.width);
+  CountDownPomodoroWidget(this.bloc, this.height, this.width);
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,8 +23,8 @@ class CountDownPomodoroWidget extends StatelessWidget {
             initialData: "",
             builder: (context, snapshot){
               return CircularPercentIndicator(
-                radius: width/1.3,
-                lineWidth: 20.0,
+                radius: width < 350 ? (width/1.35) : (width/1.1),
+                lineWidth: width < 350 ? 15.0 : 20,
                 percent: bloc.percent/100,
                 backgroundColor: Colors.green,
                 progressColor: Color.fromARGB(255, 229, 22, 22),
@@ -35,19 +34,20 @@ class CountDownPomodoroWidget extends StatelessWidget {
                     Text(
                       snapshot.data,
                       style: TextStyle(
-                          fontSize: 50.0,
+                          fontSize: width < 350 ? 40 : 80,
                           color: colorTextIcons,
                           fontFamily: 'Digitalism'
                       ),
                     ),
                     SizedBox(height: 8),
-                    ListPomodoros(pomodoros: bloc.pomodoros)
+                    ListPomodoros(bloc.pomodoros, width)
                   ],
                 ),
               );
             }
         ),
         Container(
+          margin: width < 350 ? EdgeInsets.all(10) : EdgeInsets.all(16),
           child: Column(
             children: <Widget>[
               Row(
@@ -61,7 +61,7 @@ class CountDownPomodoroWidget extends StatelessWidget {
                           child: SvgPicture.asset(
                             'assets/${snapshot.data ? 'pause' : 'play'}.svg',
                             color: Colors.white,
-                            height: 60,
+                            height: width < 350 ? 60 : 70,
                           ),
                           onTap: snapshot.data ? bloc.pauseCountDown : bloc.startCountDown,
                         );
@@ -78,13 +78,17 @@ class CountDownPomodoroWidget extends StatelessWidget {
                               child: SvgPicture.asset(
                                 'assets/stop.svg',
                                 color: Colors.white,
-                                height: 60,
+                                height: width < 350 ? 60 : 70,
                               ),
                               onTap: bloc.stopCountDown,
                             )
                         );
                       }
                   ),
+//                  FlatButton(
+//                      onPressed: bloc.showNotification,
+//                      child: Text("Notification")
+//                  )
                 ],
               )
             ],
