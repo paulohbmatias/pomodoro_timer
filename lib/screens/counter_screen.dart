@@ -3,6 +3,7 @@ import 'package:pomodoro_timer/blocs/bloc.dart';
 import 'package:pomodoro_timer/screens/settings_screen.dart';
 import 'package:pomodoro_timer/screens/widgets/bottom_sheet_widget.dart';
 import 'package:pomodoro_timer/screens/widgets/countdown_pomodoro_widget.dart';
+import 'package:pomodoro_timer/i18n/localization.dart';
 
 class CounterScreen extends StatefulWidget {
 
@@ -25,6 +26,7 @@ class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
     bloc.initCountDown();
+    bloc.context = context;
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return WillPopScope(

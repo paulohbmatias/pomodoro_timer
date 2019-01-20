@@ -5,9 +5,11 @@ import 'package:pomodoro_timer/datas/pomodoro_preferences.dart';
 import 'package:pomodoro_timer/enums/status_pomodoro.dart';
 import 'package:pomodoro_timer/helpers/local_notification.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:pomodoro_timer/i18n/localization.dart';
 
 class Bloc extends Object with Transformers, LocalNotification{
 
+  BuildContext context;
   Duration duration;
   double _percent = 100;
   double oneSecondInPercent;
@@ -79,9 +81,9 @@ class Bloc extends Object with Transformers, LocalNotification{
   void initCountDown() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     prefs = PomodoroPreferences(sharedPreferences);
-    _secondesInPomodoro = prefs.getTimePomodoro() ?? 10;
-    _secondesInShortBreak = prefs.getTimeShortBreak() ?? 5;
-    _secondesInLongBreak = prefs.getTimeLongBreak() ?? 7;
+    _secondesInPomodoro = prefs.getTimePomodoro() ?? 1500;
+    _secondesInShortBreak = prefs.getTimeShortBreak() ?? 300;
+    _secondesInLongBreak = prefs.getTimeLongBreak() ?? 900;
     secondsPomodoro.listen(
         (seconds){
           prefs.setTimePomodoro(seconds * 60);
@@ -119,15 +121,15 @@ class Bloc extends Object with Transformers, LocalNotification{
           if(isStarted){
             switch(_statusPomodoro){
               case StatusPomodoro.pomodoro:
-                createNotification("${(_secondesInPomodoro ~/ 60).toString().padLeft(2, '0')} "
+                createNotification(Localization.of(context).timeIsRunning, "${(_secondesInPomodoro ~/ 60).toString().padLeft(2, '0')} "
                     ": ${(_secondesInPomodoro % 60).toString().padLeft(2, '0')}");
                 break;
               case StatusPomodoro.shortBreak:
-                createNotification("${(_secondesInShortBreak ~/ 60).toString().padLeft(2, '0')} "
+                createNotification(Localization.of(context).timeIsRunning, "${(_secondesInShortBreak ~/ 60).toString().padLeft(2, '0')} "
                     ": ${(_secondesInShortBreak % 60).toString().padLeft(2, '0')}");
                 break;
               case StatusPomodoro.longBreak:
-                createNotification("${(_secondesInLongBreak ~/ 60).toString().padLeft(2, '0')} "
+                createNotification(Localization.of(context).timeIsRunning, "${(_secondesInLongBreak ~/ 60).toString().padLeft(2, '0')} "
                     ": ${(_secondesInLongBreak % 60).toString().padLeft(2, '0')}");
                 break;
             }
@@ -148,14 +150,14 @@ class Bloc extends Object with Transformers, LocalNotification{
       _percent = oneSecondInPercent * time;
       if(time == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros == 3 ){
         _countPomodoros = 0;
-        pauseNotification('long break');
+        pauseNotification(Localization.of(context).pomodoroIsOver, Localization.of(context).itsTimeFor + Localization.of(context).longBreak.toLowerCase());
         changeStatusTime(StatusPomodoro.longBreak);
       }else if(time == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros < 3){
         _countPomodoros++;
-        pauseNotification('short break');
+        pauseNotification(Localization.of(context).pomodoroIsOver, Localization.of(context).itsTimeFor + Localization.of(context).shortBreak.toLowerCase());
         changeStatusTime(StatusPomodoro.shortBreak);
       }else if(time == 0){
-        workNotification();
+        workNotification(Localization.of(context).breakIsOver, Localization.of(context).itsTimeToWork);
         changeStatusTime(StatusPomodoro.pomodoro);
       }
     });

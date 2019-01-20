@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro_timer/blocs/bloc.dart';
+import 'package:pomodoro_timer/i18n/localization.dart';
 
 class SettingsScreen extends StatelessWidget {
 
@@ -28,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Text("Time of Pomodoro"),
+                        Text(Localization.of(context).pomodoroTime),
                         DropdownButton<int>(
                           items: bloc.timePomodoro.map(
                                   (time) => DropdownMenuItem(
@@ -50,7 +51,7 @@ class SettingsScreen extends StatelessWidget {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Text("Time of Short Break"),
+                          Text(Localization.of(context).shortBreakTime),
                           DropdownButton<int>(
                             items: bloc.timeShortBreak.map(
                                     (time) => DropdownMenuItem(
@@ -72,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Text("Time of Long Break"),
+                          Text(Localization.of(context).longBreakTime),
                           DropdownButton<int>(
                             items: bloc.timeLongBreak.map(
                                     (time) => DropdownMenuItem(

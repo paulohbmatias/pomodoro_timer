@@ -13,10 +13,10 @@ class LocalNotification{
   }
 
 
-  void createNotification(String content) async {
+  void createNotification(String title, String content) async {
     try{
       Map<String, String> map = {
-        'title': 'Time is Running!',
+        'title': title,
         'content': content
       };
       await platform.invokeMethod('createNotification', map);
@@ -36,11 +36,11 @@ class LocalNotification{
     }
   }
 
-  void pauseNotification(String content) async {
+  void pauseNotification(String title, String content) async {
     try{
       Map<String, String> map = {
-        'title': 'Your pomodoro is over!',
-        'content': "It's time for a $content"
+        'title': title,
+        'content': content
       };
       await platform.invokeMethod('timeOverNotification', map);
     }catch(e){
@@ -48,11 +48,11 @@ class LocalNotification{
     }
   }
 
-  void workNotification() async {
+  void workNotification(String title, String content) async {
     try{
       Map<String, String> map = {
-        'title': 'Your break is over',
-        'content': "It's time to work!"
+        'title': title,
+        'content': content
       };
       await platform.invokeMethod('timeOverNotification', map);
     }catch(e){

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro_timer/blocs/bloc.dart';
+import 'package:pomodoro_timer/i18n/localization.dart';
 
 class BottomSheetPomodoro extends StatelessWidget {
 
@@ -17,15 +18,15 @@ class BottomSheetPomodoro extends StatelessWidget {
             fixedColor: Colors.red[500],
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                title: Text("Work"),
+                title: Text(Localization.of(context).pomodoro),
                 icon: Icon(Icons.timer),
               ),
               BottomNavigationBarItem(
-                title: Text("Short Break"),
+                title: Text(Localization.of(context).shortBreak),
                 icon: Icon(Icons.free_breakfast),
               ),
               BottomNavigationBarItem(
-                title: Text("Long Break"),
+                title: Text(Localization.of(context).longBreak),
                 icon: Icon(Icons.tv),
               ),
             ],
