@@ -1,4 +1,4 @@
-package com.pomodoro.pomodorotimer;
+package com.pomodoro.clockpomodoro
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -50,6 +50,10 @@ class MainActivity: FlutterActivity() {
             cancelNotification()
             result.success("")
           }
+          "cancelAllNotification" -> {
+            cancelAllNotification()
+            result.success("")
+          }
           else -> result.notImplemented()
       }
 
@@ -84,6 +88,13 @@ class MainActivity: FlutterActivity() {
     with(NotificationManagerCompat.from(this)) {
       // notificationId is a unique int for each notification that you must define
       cancel(1)
+    }
+  }
+
+  private fun cancelAllNotification(){
+    with(NotificationManagerCompat.from(this)) {
+      // notificationId is a unique int for each notification that you must define
+      cancelAll()
     }
   }
 

@@ -11,6 +11,13 @@ class LocalNotification{
       print(e);
     }
   }
+  void cancelAllNotification() async{
+    try{
+      await platform.invokeMethod('cancelAllNotification');
+    }catch(e){
+      print(e);
+    }
+  }
 
 
   void createNotification(String title, String content) async {

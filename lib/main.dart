@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         const Locale('pt', ''),
       ],
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'ClockPomodoro',
       theme: ThemeData.dark(),
       home: CounterScreen(),
     );

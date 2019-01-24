@@ -5,6 +5,8 @@ class PomodoroPreferences{
   static const pomodoro = "pomodoro";
   static const shortBreak = "shortBreak";
   static const longBreak = "longBreak";
+  static const lastDataTimeBeforeInactive = "lastDataTimeBeforeInactive";
+  static const lastTimeBeforeInactive = "lastTimeBeforeInactive";
 
   final SharedPreferences prefs;
 
@@ -24,6 +26,16 @@ class PomodoroPreferences{
     prefs.setInt(longBreak, time);
   }
 
+  setLastDataTimeBeforeInactive(int time) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(lastDataTimeBeforeInactive, time);
+  }
+
+  setLastTimeBeforeInactive(int time) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(lastTimeBeforeInactive, time);
+  }
+
   int getTimePomodoro(){
     return prefs.getInt(pomodoro);
   }
@@ -35,4 +47,14 @@ class PomodoroPreferences{
   int getTimeLongBreak(){
     return prefs.getInt(longBreak);
   }
+
+  int getLastDataTimeBeforeInactive(){
+    return prefs.getInt(lastDataTimeBeforeInactive);
+  }
+
+  int getLastTimeBeforeInactive(){
+    return prefs.getInt(lastTimeBeforeInactive) ?? -1;
+  }
+
+
 }

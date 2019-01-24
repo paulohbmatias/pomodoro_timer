@@ -20,6 +20,9 @@ class Bloc extends Object with Transformers, LocalNotification{
   int _pomodoroPage = 0;
   int _shortBreakPage = 1;
   int _longBreakPage = 2;
+  int _lastTimeBeforeInactive;
+  int _lastDataTimeBeforeInactive;
+  int _timeRemaining;
   List<int> timePomodoro = [20, 25, 30, 35, 40, 45, 50, 55, 60];
   List<int> timeShortBreak = [3, 5, 7];
   List<int> timeLongBreak = [15, 20, 25, 30];
@@ -74,6 +77,30 @@ class Bloc extends Object with Transformers, LocalNotification{
       case 2:
         changeStatusTime(StatusPomodoro.longBreak);
         break;
+    }
+  }
+
+  void didChangeAppLifecycleState(AppLifecycleState state){
+    switch(state){
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.suspending:
+        print(state);
+        prefs.setLastDataTimeBeforeInactive(DateTime.now().second);
+        prefs.setLastTimeBeforeInactive(_timeRemaining);
+        print(_timeRemaining);
+        break;
+      case AppLifecycleState.resumed:
+//        if(prefs.getLastTimeBeforeInactive() != null
+//            && prefs.getLastDataTimeBeforeInactive() != null){
+//          print(prefs.getLastTimeBeforeInactive() ?? null);
+//          if(_timeRemaining != prefs.getLastTimeBeforeInactive()){
+//            int pastTime = DateTime.now().second - prefs.getLastDataTimeBeforeInactive();
+//            stopwatch.reset();
+//            duration = Duration(seconds: prefs.getLastTimeBeforeInactive() - pastTime);
+//            print(duration);
+//          }
+//        }
     }
   }
 
@@ -144,19 +171,20 @@ class Bloc extends Object with Transformers, LocalNotification{
       oneSecondInPercent = 100/_secondesInPomodoro;
     if(duration == null)
       duration = Duration(seconds: _secondesInPomodoro);
-    Timer.periodic(Duration(milliseconds: 500), (timer){
-      int time = duration.inSeconds - stopwatch.elapsed.inSeconds;
-      changeTimer(time);
-      _percent = oneSecondInPercent * time;
-      if(time == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros == 3 ){
+
+    Timer.periodic(Duration(milliseconds: 1000), (timer){
+      _timeRemaining = duration.inSeconds - stopwatch.elapsed.inSeconds;
+      changeTimer(_timeRemaining);
+      _percent = oneSecondInPercent * _timeRemaining;
+      if(_timeRemaining == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros == 3 ){
         _countPomodoros = 0;
         pauseNotification(Localization.of(context).pomodoroIsOver, Localization.of(context).itsTimeFor + Localization.of(context).longBreak.toLowerCase());
         changeStatusTime(StatusPomodoro.longBreak);
-      }else if(time == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros < 3){
+      }else if(_timeRemaining == 0 && _statusPomodoro == StatusPomodoro.pomodoro && _countPomodoros < 3){
         _countPomodoros++;
         pauseNotification(Localization.of(context).pomodoroIsOver, Localization.of(context).itsTimeFor + Localization.of(context).shortBreak.toLowerCase());
         changeStatusTime(StatusPomodoro.shortBreak);
-      }else if(time == 0){
+      }else if(_timeRemaining == 0){
         workNotification(Localization.of(context).breakIsOver, Localization.of(context).itsTimeToWork);
         changeStatusTime(StatusPomodoro.pomodoro);
       }
@@ -211,6 +239,18 @@ class Bloc extends Object with Transformers, LocalNotification{
     changeIsRunning(false);
     changeIsStarted(false);
     stopwatch.stop();
+    switch(_statusPomodoro){
+      case StatusPomodoro.pomodoro:
+        duration = Duration(seconds: _secondesInPomodoro);
+        break;
+      case StatusPomodoro.shortBreak:
+        duration = Duration(seconds: _secondesInShortBreak);
+        break;
+      case StatusPomodoro.longBreak:
+        duration = Duration(seconds: _secondesInLongBreak);
+        break;
+
+    }
     stopwatch.reset();
   }
 
@@ -225,6 +265,7 @@ class Bloc extends Object with Transformers, LocalNotification{
     _secondsPomodoroStream.close();
     _secondsShortBreakStream.close();
     _secondsLongBreakStream.close();
+    cancelAllNotification();
   }
 }
 

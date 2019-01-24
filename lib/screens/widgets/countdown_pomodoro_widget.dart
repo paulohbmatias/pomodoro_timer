@@ -23,7 +23,7 @@ class CountDownPomodoroWidget extends StatelessWidget {
             initialData: "",
             builder: (context, snapshot){
               return CircularPercentIndicator(
-                radius: width < 350 ? (width/1.3) : (width/1.07),
+                radius: width < 350 ? (width/1.3) : (width/1.2),
                 lineWidth: width < 350 ? 15.0 : 20,
                 percent: bloc.percent/100,
                 backgroundColor: Color(0xff2abd6c),
