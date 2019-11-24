@@ -33,7 +33,7 @@ class _CounterScreenState extends State<CounterScreen> with WidgetsBindingObserv
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    bloc.didChangeAppLifecycleState(state);
+//    bloc.didChangeAppLifecycleState(state);
   }
 
   @override

@@ -80,30 +80,6 @@ class Bloc extends Object with Transformers, LocalNotification{
     }
   }
 
-  void didChangeAppLifecycleState(AppLifecycleState state){
-    switch(state){
-      case AppLifecycleState.inactive:
-      case AppLifecycleState.paused:
-      case AppLifecycleState.suspending:
-        print(state);
-        prefs.setLastDataTimeBeforeInactive(DateTime.now().second);
-        prefs.setLastTimeBeforeInactive(_timeRemaining);
-        print(_timeRemaining);
-        break;
-      case AppLifecycleState.resumed:
-//        if(prefs.getLastTimeBeforeInactive() != null
-//            && prefs.getLastDataTimeBeforeInactive() != null){
-//          print(prefs.getLastTimeBeforeInactive() ?? null);
-//          if(_timeRemaining != prefs.getLastTimeBeforeInactive()){
-//            int pastTime = DateTime.now().second - prefs.getLastDataTimeBeforeInactive();
-//            stopwatch.reset();
-//            duration = Duration(seconds: prefs.getLastTimeBeforeInactive() - pastTime);
-//            print(duration);
-//          }
-//        }
-    }
-  }
-
 
   void initCountDown() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

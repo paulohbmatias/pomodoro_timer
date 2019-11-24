@@ -1,0 +1,170 @@
+[
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout_notification_template_part_chronometer.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout_notification_action.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xxxhdpi_ic_stat_pomodoro.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/drawable-xxxhdpi/ic_stat_pomodoro.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable_notification_tile_bg.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout-v21_notification_action_tombstone.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xxhdpi_ic_stat_pomodoro.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/drawable-xxhdpi/ic_stat_pomodoro.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout_notification_template_icon_group.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-mdpi_ic_stat_pomodoro.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/drawable-mdpi/ic_stat_pomodoro.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-mdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-xhdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/drawable/launch_background.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout-v21_notification_template_custom_big.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout-v21_notification_action.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/raw_good_things_happen.mp3.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/raw/good_things_happen.mp3"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout-v16_notification_template_custom_big.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout-v16/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable_notification_icon_background.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-hdpi_ic_stat_pomodoro.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/drawable-hdpi/ic_stat_pomodoro.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout_notification_action_tombstone.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/layout-v21_notification_template_icon_group.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
+        "source": "/home/paulohenrique/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/54a95016acbb3ba4e9faaaca534f9c68/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/res/merged/debug/drawable-xhdpi_ic_stat_pomodoro.png.flat",
+        "source": "/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/android/app/src/main/res/drawable-xhdpi/ic_stat_pomodoro.png"
+    }
+]

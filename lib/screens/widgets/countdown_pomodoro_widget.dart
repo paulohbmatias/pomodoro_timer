@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pomodoro_timer/blocs/bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pomodoro_timer/screens/widgets/pomodoros_widget.dart';
 
 class CountDownPomodoroWidget extends StatelessWidget {

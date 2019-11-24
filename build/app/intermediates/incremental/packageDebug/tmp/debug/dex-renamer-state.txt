@@ -1,0 +1,4 @@
+#Sun Nov 24 01:27:57 BRT 2019
+base.0=/home/paulohenrique/Projects/Mobile/github.com/paulohbmatias/pomodoro_timer/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
